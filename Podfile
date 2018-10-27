@@ -18,6 +18,9 @@ target 'Niebo' do
     inherit! :search_paths
     pod 'RxBlocking', '~> 4.0'
     pod 'RxTest',     '~> 4.0'
+    
+    target 'NieboFrameworkTests' do
+    end
   end
 
 end
