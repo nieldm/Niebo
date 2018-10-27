@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		0328F0D917CF316287EBB217 /* Pods_NieboTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2391F08238A5939CC96E75FB /* Pods_NieboTests.framework */; };
 		6E817E858B2AE682FEB65E8B /* Pods_Niebo_NieboFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 023E9ADAB417EFE571DD8D61 /* Pods_Niebo_NieboFramework.framework */; };
+		7551D68D5129F6CDFFA39F6E /* Pods_NieboTests_NieboFrameworkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA737EC93E5584EB4610664 /* Pods_NieboTests_NieboFrameworkTests.framework */; };
 		AF9B74DE26CCD094CFE1A73F /* Pods_Niebo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DE33BE0DD3FC38E1AB76EC /* Pods_Niebo.framework */; };
 		B12164D82184EC1C00CF0DB3 /* NieboFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B12164CF2184EC1C00CF0DB3 /* NieboFramework.framework */; };
-		B12164DF2184EC1C00CF0DB3 /* NieboFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12164DE2184EC1C00CF0DB3 /* NieboFrameworkTests.swift */; };
 		B12164E12184EC1C00CF0DB3 /* NieboFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = B12164D12184EC1C00CF0DB3 /* NieboFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B12164E42184EC1C00CF0DB3 /* NieboFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B12164CF2184EC1C00CF0DB3 /* NieboFramework.framework */; };
 		B12164E52184EC1C00CF0DB3 /* NieboFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B12164CF2184EC1C00CF0DB3 /* NieboFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B15302AA2184F7D000E98DE9 /* SKYPricesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15302A92184F7D000E98DE9 /* SKYPricesAPI.swift */; };
+		B15302AF21850A2E00E98DE9 /* PricingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15302AE21850A2E00E98DE9 /* PricingModel.swift */; };
+		B15302B621850F6F00E98DE9 /* pricesPoll.json in Resources */ = {isa = PBXBuildFile; fileRef = B15302B521850F6F00E98DE9 /* pricesPoll.json */; };
+		B15302BB21850FBF00E98DE9 /* PricingModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15302BA21850FBF00E98DE9 /* PricingModelTest.swift */; };
 		B1EE7B332184DCF400AFF9A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EE7B322184DCF400AFF9A8 /* AppDelegate.swift */; };
 		B1EE7B352184DCF400AFF9A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EE7B342184DCF400AFF9A8 /* ViewController.swift */; };
 		B1EE7B382184DCF400AFF9A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1EE7B362184DCF400AFF9A8 /* Main.storyboard */; };
@@ -72,21 +76,23 @@
 		023E9ADAB417EFE571DD8D61 /* Pods_Niebo_NieboFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Niebo_NieboFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		060C0182428130B46DBCE550 /* Pods-Niebo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Niebo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Niebo/Pods-Niebo.release.xcconfig"; sourceTree = "<group>"; };
 		2391F08238A5939CC96E75FB /* Pods_NieboTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NieboTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BC45FD3B367D7E33206F825 /* Pods-NieboTests-NieboFrameworkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NieboTests-NieboFrameworkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NieboTests-NieboFrameworkTests/Pods-NieboTests-NieboFrameworkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4D2CB269701E4CB76AC5395E /* Pods-Niebo-NieboFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Niebo-NieboFramework.release.xcconfig"; path = "Pods/Target Support Files/Pods-Niebo-NieboFramework/Pods-Niebo-NieboFramework.release.xcconfig"; sourceTree = "<group>"; };
 		5219BCC42019BF363327F57E /* Pods-Niebo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Niebo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Niebo/Pods-Niebo.debug.xcconfig"; sourceTree = "<group>"; };
 		581F49161A12FC0BA683AE7C /* Pods-Niebo-AppFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Niebo-AppFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Niebo-AppFramework/Pods-Niebo-AppFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		585E8DEDC0F80E63C6153301 /* Pods_Niebo_AppFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Niebo_AppFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		704A1E73EB2621F65229505F /* Pods-NieboTests-NieboFrameworkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NieboTests-NieboFrameworkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NieboTests-NieboFrameworkTests/Pods-NieboTests-NieboFrameworkTests.release.xcconfig"; sourceTree = "<group>"; };
 		77DE33BE0DD3FC38E1AB76EC /* Pods_Niebo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Niebo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B12164AE2184EA9500CF0DB3 /* AppFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppFramework.h; sourceTree = "<group>"; };
-		B12164AF2184EA9500CF0DB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B12164BB2184EA9500CF0DB3 /* AppFrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFrameworkTests.swift; sourceTree = "<group>"; };
-		B12164BD2184EA9500CF0DB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B12164CF2184EC1C00CF0DB3 /* NieboFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NieboFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B12164D12184EC1C00CF0DB3 /* NieboFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NieboFramework.h; sourceTree = "<group>"; };
 		B12164D22184EC1C00CF0DB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B12164D72184EC1C00CF0DB3 /* NieboFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NieboFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B12164DE2184EC1C00CF0DB3 /* NieboFrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NieboFrameworkTests.swift; sourceTree = "<group>"; };
 		B12164E02184EC1C00CF0DB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B15302A92184F7D000E98DE9 /* SKYPricesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKYPricesAPI.swift; sourceTree = "<group>"; };
+		B15302AE21850A2E00E98DE9 /* PricingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingModel.swift; sourceTree = "<group>"; };
+		B15302B021850F4F00E98DE9 /* NieboFrameworkTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NieboFrameworkTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		B15302B521850F6F00E98DE9 /* pricesPoll.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pricesPoll.json; sourceTree = "<group>"; };
+		B15302BA21850FBF00E98DE9 /* PricingModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricingModelTest.swift; sourceTree = "<group>"; };
 		B1EE7B2F2184DCF400AFF9A8 /* Niebo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Niebo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1EE7B322184DCF400AFF9A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1EE7B342184DCF400AFF9A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +104,7 @@
 		B1EE7B472184DCF500AFF9A8 /* NieboTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NieboTests.swift; sourceTree = "<group>"; };
 		B1EE7B492184DCF500AFF9A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD98B3299ADB4FB4A0E86BEA /* Pods-Niebo-AppFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Niebo-AppFramework.release.xcconfig"; path = "Pods/Target Support Files/Pods-Niebo-AppFramework/Pods-Niebo-AppFramework.release.xcconfig"; sourceTree = "<group>"; };
+		DBA737EC93E5584EB4610664 /* Pods_NieboTests_NieboFrameworkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NieboTests_NieboFrameworkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37B86EC8E14B88429A921A7 /* Pods-NieboTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NieboTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NieboTests/Pods-NieboTests.release.xcconfig"; sourceTree = "<group>"; };
 		F2C55E6CD12B352D2B6FE146 /* Pods-NieboTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NieboTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NieboTests/Pods-NieboTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F548CAEF43815F5FDC39C80E /* Pods-Niebo-NieboFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Niebo-NieboFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Niebo-NieboFramework/Pods-Niebo-NieboFramework.debug.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B12164D82184EC1C00CF0DB3 /* NieboFramework.framework in Frameworks */,
+				7551D68D5129F6CDFFA39F6E /* Pods_NieboTests_NieboFrameworkTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,31 +155,17 @@
 				2391F08238A5939CC96E75FB /* Pods_NieboTests.framework */,
 				585E8DEDC0F80E63C6153301 /* Pods_Niebo_AppFramework.framework */,
 				023E9ADAB417EFE571DD8D61 /* Pods_Niebo_NieboFramework.framework */,
+				DBA737EC93E5584EB4610664 /* Pods_NieboTests_NieboFrameworkTests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B12164AD2184EA9500CF0DB3 /* AppFramework */ = {
-			isa = PBXGroup;
-			children = (
-				B12164AE2184EA9500CF0DB3 /* AppFramework.h */,
-				B12164AF2184EA9500CF0DB3 /* Info.plist */,
-			);
-			path = AppFramework;
-			sourceTree = "<group>";
-		};
-		B12164BA2184EA9500CF0DB3 /* AppFrameworkTests */ = {
-			isa = PBXGroup;
-			children = (
-				B12164BB2184EA9500CF0DB3 /* AppFrameworkTests.swift */,
-				B12164BD2184EA9500CF0DB3 /* Info.plist */,
-			);
-			path = AppFrameworkTests;
 			sourceTree = "<group>";
 		};
 		B12164D02184EC1C00CF0DB3 /* NieboFramework */ = {
 			isa = PBXGroup;
 			children = (
+				B15302A82184F7D000E98DE9 /* API */,
+				B15302AB218508D700E98DE9 /* Models */,
+				B15302B321850F6F00E98DE9 /* Resources */,
 				B12164D12184EC1C00CF0DB3 /* NieboFramework.h */,
 				B12164D22184EC1C00CF0DB3 /* Info.plist */,
 			);
@@ -181,10 +175,51 @@
 		B12164DD2184EC1C00CF0DB3 /* NieboFrameworkTests */ = {
 			isa = PBXGroup;
 			children = (
-				B12164DE2184EC1C00CF0DB3 /* NieboFrameworkTests.swift */,
+				B15302B921850FBF00E98DE9 /* Models */,
 				B12164E02184EC1C00CF0DB3 /* Info.plist */,
+				B15302B021850F4F00E98DE9 /* NieboFrameworkTests-Bridging-Header.h */,
 			);
 			path = NieboFrameworkTests;
+			sourceTree = "<group>";
+		};
+		B15302A82184F7D000E98DE9 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B15302A92184F7D000E98DE9 /* SKYPricesAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		B15302AB218508D700E98DE9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B15302AE21850A2E00E98DE9 /* PricingModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B15302B321850F6F00E98DE9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B15302B421850F6F00E98DE9 /* ServiceMocks */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B15302B421850F6F00E98DE9 /* ServiceMocks */ = {
+			isa = PBXGroup;
+			children = (
+				B15302B521850F6F00E98DE9 /* pricesPoll.json */,
+			);
+			path = ServiceMocks;
+			sourceTree = "<group>";
+		};
+		B15302B921850FBF00E98DE9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B15302BA21850FBF00E98DE9 /* PricingModelTest.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B1EE7B262184DCF400AFF9A8 = {
@@ -192,8 +227,6 @@
 			children = (
 				B1EE7B312184DCF400AFF9A8 /* Niebo */,
 				B1EE7B462184DCF500AFF9A8 /* NieboTests */,
-				B12164AD2184EA9500CF0DB3 /* AppFramework */,
-				B12164BA2184EA9500CF0DB3 /* AppFrameworkTests */,
 				B12164D02184EC1C00CF0DB3 /* NieboFramework */,
 				B12164DD2184EC1C00CF0DB3 /* NieboFrameworkTests */,
 				B1EE7B302184DCF400AFF9A8 /* Products */,
@@ -246,6 +279,8 @@
 				BD98B3299ADB4FB4A0E86BEA /* Pods-Niebo-AppFramework.release.xcconfig */,
 				F548CAEF43815F5FDC39C80E /* Pods-Niebo-NieboFramework.debug.xcconfig */,
 				4D2CB269701E4CB76AC5395E /* Pods-Niebo-NieboFramework.release.xcconfig */,
+				4BC45FD3B367D7E33206F825 /* Pods-NieboTests-NieboFrameworkTests.debug.xcconfig */,
+				704A1E73EB2621F65229505F /* Pods-NieboTests-NieboFrameworkTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -287,9 +322,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B12164EB2184EC2400CF0DB3 /* Build configuration list for PBXNativeTarget "NieboFrameworkTests" */;
 			buildPhases = (
+				7715226F84822196B658984F /* [CP] Check Pods Manifest.lock */,
 				B12164D32184EC1C00CF0DB3 /* Sources */,
 				B12164D42184EC1C00CF0DB3 /* Frameworks */,
 				B12164D52184EC1C00CF0DB3 /* Resources */,
+				E49C5A128865B22AD8D8F20B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -358,6 +395,7 @@
 					};
 					B12164D62184EC1C00CF0DB3 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 						TestTargetID = B1EE7B2E2184DCF400AFF9A8;
 					};
 					B1EE7B2E2184DCF400AFF9A8 = {
@@ -395,6 +433,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B15302B621850F6F00E98DE9 /* pricesPoll.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +534,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7715226F84822196B658984F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NieboTests-NieboFrameworkTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9517FC93915F815921F9DECC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -559,6 +620,52 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Niebo/Pods-Niebo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E49C5A128865B22AD8D8F20B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NieboTests-NieboFrameworkTests/Pods-NieboTests-NieboFrameworkTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwiftExt/RxSwiftExt.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftExt.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NieboTests-NieboFrameworkTests/Pods-NieboTests-NieboFrameworkTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -566,6 +673,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B15302AA2184F7D000E98DE9 /* SKYPricesAPI.swift in Sources */,
+				B15302AF21850A2E00E98DE9 /* PricingModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,7 +682,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B12164DF2184EC1C00CF0DB3 /* NieboFrameworkTests.swift in Sources */,
+				B15302BB21850FBF00E98DE9 /* PricingModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,8 +808,10 @@
 		};
 		B12164E82184EC1D00CF0DB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BC45FD3B367D7E33206F825 /* Pods-NieboTests-NieboFrameworkTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VT5ZVS6ZZ;
 				INFOPLIST_FILE = NieboFrameworkTests/Info.plist;
@@ -711,6 +822,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nieldm.NieboFrameworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NieboFrameworkTests/NieboFrameworkTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Niebo.app/Niebo";
@@ -719,8 +832,10 @@
 		};
 		B12164E92184EC1D00CF0DB3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 704A1E73EB2621F65229505F /* Pods-NieboTests-NieboFrameworkTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VT5ZVS6ZZ;
 				INFOPLIST_FILE = NieboFrameworkTests/Info.plist;
@@ -731,6 +846,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nieldm.NieboFrameworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NieboFrameworkTests/NieboFrameworkTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Niebo.app/Niebo";
@@ -857,6 +973,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5219BCC42019BF363327F57E /* Pods-Niebo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VT5ZVS6ZZ;
@@ -876,6 +993,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 060C0182428130B46DBCE550 /* Pods-Niebo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VT5ZVS6ZZ;
