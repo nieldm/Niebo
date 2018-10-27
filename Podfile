@@ -11,6 +11,9 @@ target 'Niebo' do
   pod 'RxDataSources',     '~> 3.0'
   pod 'ReachabilitySwift', '~> 4.1.0'
 
+  target 'NieboFramework' do
+  end
+
   target 'NieboTests' do
     inherit! :search_paths
     pod 'RxBlocking', '~> 4.0'
