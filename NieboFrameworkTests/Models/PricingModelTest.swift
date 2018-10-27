@@ -16,11 +16,14 @@ class PricingModelTest: XCTestCase {
     }
 
     func testModel() {
-        let result = try? self.sut.rx.initSession
+        let result = try! self.sut.rx.initSession
             .toBlocking()
             .last()
         
-        XCTAssertEqual(result, true)
+        XCTAssertEqual(result?.status, "UpdatesPending")
+        XCTAssertEqual(result?.itineraries.count, 10)
+        XCTAssertEqual(result?.itineraries.first?.pricingOptions.count, 5)
+        XCTAssertEqual(result?.legs.count, 141)
     }
 
 }
