@@ -10,20 +10,30 @@ class PricingModelTest: XCTestCase {
     override func setUp() {
         self.sut = PricingModel(mocked: true)
     }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
+    
     func testModel() {
         let result = try! self.sut.rx.initSession
             .toBlocking()
             .last()
         
-        XCTAssertEqual(result?.status, "UpdatesPending")
+        XCTAssertEqual(result?.status, Status.pending)
         XCTAssertEqual(result?.itineraries.count, 10)
         XCTAssertEqual(result?.itineraries.first?.pricingOptions.count, 5)
         XCTAssertEqual(result?.legs.count, 141)
+    }
+    
+    func testQueryCompose() {
+        let result = try! self.sut.rx.initSession
+            .toBlocking()
+            .last()
+        
+        guard let query = result?.compose() else {
+            fatalError()
+        }
+        query.itineraries.forEach {
+            XCTAssertNotNil($0.leg)
+            XCTAssertGreaterThan($0.leg?.segments.count ?? 0, 0)
+        }
     }
 
 }
