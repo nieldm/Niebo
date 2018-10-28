@@ -5,11 +5,14 @@ import Moya
 let model = PricingModel(mocked: true)
 let _ = model.rx.initSession
     .subscribe(onNext: { result in
-        print(result.status)
-        let first = result.itineraries.first
-        print(first?.legId)
-        print(first?.leg)
-//        let agent = result.agent(id: first?.pricingOptions.first?.agents.first ?? 0)
-//        print(agent?.name)
+        let query = result.compose()
+        guard let itinerary = query.itineraries.first else { return }
+        guard let leg = itinerary.leg else { return }
+        print("Segments \(leg.segments.count)")
+        guard let segment = leg.segments.first else { return }
+        segment.origin
+        segment.destination
+        guard let carrier = segment.carrier else { return }
+        print("Carrier \(carrier.displayCode)")
     })
 

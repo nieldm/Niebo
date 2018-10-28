@@ -29,29 +29,38 @@ public struct FlightQuery: Codable, Then {
         case currencies = "Currencies"
     }
     
-//    public init(from decoder: Decoder) throws
-//    {
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
-//        self.status = try values.decode(Status.self, forKey: .status)
-//        let itineraries = try values.decode(Array<Itinerary>.self, forKey: .itineraries)
-//        let legs = try values.decode(Array<FlightLeg>.self, forKey: .legs)
-//        self.itineraries = itineraries
-//    }
-    
-//    public func compose() -> FlightQuery {
-//        return self.with { query in
-//            query.itineraries = query.itineraries.map { itinerary in
-//                return itinerary.with { mutableItinerary in
-//                    mutableItinerary.leg = self.legs.filter { $0.id == itinerary.legId }.first
-//                    mutableItinerary.pricingOptions = itinerary.pricingOptions.map { option in
-//                        return option.with { mutableOption in
-//                            mutableOption.agents = self.agents.filter { agent -> Bool in
-//                                return option.agentIds.contains(agent.id)
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
+    public func compose() -> FlightQuery {
+        return self.with { query in
+            query.segments = query.segments.map { segment in
+                return segment.with { mutableSegment in
+                    mutableSegment.carrier = query.carriers.filter { segment.carrierId == $0.id }.first
+                    mutableSegment.origin = query.places.filter { segment.originId == $0.id }.first
+                    mutableSegment.destination = query.places.filter { segment.destinationId == $0.id }.first
+                }
+            }
+            query.legs = query.legs.map { leg in
+                return leg.with { mutableLeg in
+                    mutableLeg.segments = query.segments.filter { leg.segmentIds.contains($0.id) }
+                    mutableLeg.stops = query.places.filter { leg.stopIds.contains($0.id) }
+                    mutableLeg.flightNumbers = leg.flightNumbers.map { fnumber in
+                        return fnumber.with { mutableFnumber in
+                            mutableFnumber.carrier = query.carriers.filter { fnumber.carrierId == $0.id }.first
+                        }
+                    }
+                }
+            }
+            query.itineraries = query.itineraries.map { itinerary in
+                return itinerary.with { mutableItinerary in
+                    mutableItinerary.leg = query.legs.filter { $0.id == itinerary.legId }.first
+                    mutableItinerary.pricingOptions = itinerary.pricingOptions.map { option in
+                        return option.with { mutableOption in
+                            mutableOption.agents = query.agents.filter { agent -> Bool in
+                                return option.agentIds.contains(agent.id)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
