@@ -58,7 +58,7 @@ extension SKYPricesAPI: TargetType {
             parameters["locationSchema"] = "sky"
             parameters["originPlace"] = "EDI-sky"
             parameters["destinationPlace"] = "LOND-sky"
-            parameters["outboundDate"] = "2018-10-29"
+            parameters["outboundDate"] = "2018-11-16"
         case .results(_, let pageIndex):
             parameters["pageIndex"] = pageIndex
         }

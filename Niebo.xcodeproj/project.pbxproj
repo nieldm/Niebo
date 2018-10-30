@@ -23,6 +23,7 @@
 		B15C9E1A2188EFB4000EC7FB /* SectionOfResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15C9E192188EFB4000EC7FB /* SectionOfResult.swift */; };
 		B15C9E212188F965000EC7FB /* ResultsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15C9E1F2188F965000EC7FB /* ResultsCollectionViewCell.swift */; };
 		B15C9E222188F965000EC7FB /* ResultsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B15C9E202188F965000EC7FB /* ResultsCollectionViewCell.xib */; };
+		B15C9E2421890E09000EC7FB /* SegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15C9E2321890E09000EC7FB /* SegmentView.swift */; };
 		B1B1F09D218517FA00A84EAC /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1F09C218517FA00A84EAC /* Itinerary.swift */; };
 		B1B1F09F2185185200A84EAC /* FlightQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1F09E2185185200A84EAC /* FlightQuery.swift */; };
 		B1B1F0A121851BA800A84EAC /* pricesPoll.json in Resources */ = {isa = PBXBuildFile; fileRef = B15302B521850F6F00E98DE9 /* pricesPoll.json */; };
@@ -114,6 +115,7 @@
 		B15C9E192188EFB4000EC7FB /* SectionOfResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionOfResult.swift; sourceTree = "<group>"; };
 		B15C9E1F2188F965000EC7FB /* ResultsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B15C9E202188F965000EC7FB /* ResultsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsCollectionViewCell.xib; sourceTree = "<group>"; };
+		B15C9E2321890E09000EC7FB /* SegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentView.swift; sourceTree = "<group>"; };
 		B1B1F09C218517FA00A84EAC /* Itinerary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
 		B1B1F09E2185185200A84EAC /* FlightQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightQuery.swift; sourceTree = "<group>"; };
 		B1B1F0A2218526CF00A84EAC /* PricingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingOption.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				B15C9E192188EFB4000EC7FB /* SectionOfResult.swift */,
 				B15C9E1F2188F965000EC7FB /* ResultsCollectionViewCell.swift */,
 				B15C9E202188F965000EC7FB /* ResultsCollectionViewCell.xib */,
+				B15C9E2321890E09000EC7FB /* SegmentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -749,6 +752,7 @@
 				B15C9E212188F965000EC7FB /* ResultsCollectionViewCell.swift in Sources */,
 				B1B1F09D218517FA00A84EAC /* Itinerary.swift in Sources */,
 				B1B1F0AB2185531000A84EAC /* Carrier.swift in Sources */,
+				B15C9E2421890E09000EC7FB /* SegmentView.swift in Sources */,
 				B1B1F0A921852D7600A84EAC /* Segment.swift in Sources */,
 				B1B1F0A721852C0B00A84EAC /* FlightNumber.swift in Sources */,
 				B1B1F0A5218527F400A84EAC /* FlightLeg.swift in Sources */,
