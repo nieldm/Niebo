@@ -19,6 +19,10 @@
 		B15302AF21850A2E00E98DE9 /* PricingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15302AE21850A2E00E98DE9 /* PricingModel.swift */; };
 		B15302B621850F6F00E98DE9 /* pricesPoll.json in Resources */ = {isa = PBXBuildFile; fileRef = B15302B521850F6F00E98DE9 /* pricesPoll.json */; };
 		B15302BB21850FBF00E98DE9 /* PricingModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15302BA21850FBF00E98DE9 /* PricingModelTest.swift */; };
+		B15C9E182188EBD8000EC7FB /* ResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15C9E172188EBD8000EC7FB /* ResultsViewModel.swift */; };
+		B15C9E1A2188EFB4000EC7FB /* SectionOfResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15C9E192188EFB4000EC7FB /* SectionOfResult.swift */; };
+		B15C9E212188F965000EC7FB /* ResultsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15C9E1F2188F965000EC7FB /* ResultsCollectionViewCell.swift */; };
+		B15C9E222188F965000EC7FB /* ResultsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B15C9E202188F965000EC7FB /* ResultsCollectionViewCell.xib */; };
 		B1B1F09D218517FA00A84EAC /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1F09C218517FA00A84EAC /* Itinerary.swift */; };
 		B1B1F09F2185185200A84EAC /* FlightQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1F09E2185185200A84EAC /* FlightQuery.swift */; };
 		B1B1F0A121851BA800A84EAC /* pricesPoll.json in Resources */ = {isa = PBXBuildFile; fileRef = B15302B521850F6F00E98DE9 /* pricesPoll.json */; };
@@ -106,6 +110,10 @@
 		B15302B021850F4F00E98DE9 /* NieboFrameworkTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NieboFrameworkTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		B15302B521850F6F00E98DE9 /* pricesPoll.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pricesPoll.json; sourceTree = "<group>"; };
 		B15302BA21850FBF00E98DE9 /* PricingModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricingModelTest.swift; sourceTree = "<group>"; };
+		B15C9E172188EBD8000EC7FB /* ResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewModel.swift; sourceTree = "<group>"; };
+		B15C9E192188EFB4000EC7FB /* SectionOfResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionOfResult.swift; sourceTree = "<group>"; };
+		B15C9E1F2188F965000EC7FB /* ResultsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsCollectionViewCell.swift; sourceTree = "<group>"; };
+		B15C9E202188F965000EC7FB /* ResultsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsCollectionViewCell.xib; sourceTree = "<group>"; };
 		B1B1F09C218517FA00A84EAC /* Itinerary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
 		B1B1F09E2185185200A84EAC /* FlightQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightQuery.swift; sourceTree = "<group>"; };
 		B1B1F0A2218526CF00A84EAC /* PricingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingOption.swift; sourceTree = "<group>"; };
@@ -270,6 +278,10 @@
 			isa = PBXGroup;
 			children = (
 				B1DEF317218697B400F2893D /* ResultsViewController.swift */,
+				B15C9E172188EBD8000EC7FB /* ResultsViewModel.swift */,
+				B15C9E192188EFB4000EC7FB /* SectionOfResult.swift */,
+				B15C9E1F2188F965000EC7FB /* ResultsCollectionViewCell.swift */,
+				B15C9E202188F965000EC7FB /* ResultsCollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -486,6 +498,7 @@
 			files = (
 				B1DEF31D2186A1CB00F2893D /* Assets.xcassets in Resources */,
 				B15302B621850F6F00E98DE9 /* pricesPoll.json in Resources */,
+				B15C9E222188F965000EC7FB /* ResultsCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,10 +740,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1B1F0B12185555600A84EAC /* Currency.swift in Sources */,
+				B15C9E182188EBD8000EC7FB /* ResultsViewModel.swift in Sources */,
+				B15C9E1A2188EFB4000EC7FB /* SectionOfResult.swift in Sources */,
 				B1B1F09F2185185200A84EAC /* FlightQuery.swift in Sources */,
 				B1B1F0AD218553D500A84EAC /* Agent.swift in Sources */,
 				B1DEF318218697B500F2893D /* ResultsViewController.swift in Sources */,
 				B15302AA2184F7D000E98DE9 /* SKYPricesAPI.swift in Sources */,
+				B15C9E212188F965000EC7FB /* ResultsCollectionViewCell.swift in Sources */,
 				B1B1F09D218517FA00A84EAC /* Itinerary.swift in Sources */,
 				B1B1F0AB2185531000A84EAC /* Carrier.swift in Sources */,
 				B1B1F0A921852D7600A84EAC /* Segment.swift in Sources */,
