@@ -51,6 +51,7 @@ public struct FlightQuery: Codable, Then {
             }
             query.itineraries = query.itineraries.map { itinerary in
                 return itinerary.with { mutableItinerary in
+                    mutableItinerary.currency = query.currencies.first
                     mutableItinerary.leg = query.legs.filter { $0.id == itinerary.legId }.first
                     mutableItinerary.pricingOptions = itinerary.pricingOptions.map { option in
                         return option.with { mutableOption in
