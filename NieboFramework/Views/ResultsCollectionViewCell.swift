@@ -23,6 +23,7 @@ class ResultsCollectionViewCell: UICollectionViewCell {
             let _ = SegmentView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 70)).then {
                 self.segmentStackView.addArrangedSubview($0)
                 $0.createConstraints()
+                $0.set(data: segment)
             }
         }
     }

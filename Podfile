@@ -10,6 +10,7 @@ target 'Niebo' do
   pod 'SnapKit',           '~> 4.0.0'
   pod 'RxDataSources',     '~> 3.0'
   pod 'ReachabilitySwift', '~> 4.1.0'
+  pod 'AlamofireImage',    '~> 3.4'
 
   target 'NieboFramework' do
   end
