@@ -15,7 +15,7 @@ public class ResultsViewModel: ReactiveCompatible {
     
     //Mocked Init
     public convenience init() {
-        self.init(model: PricingModel(mocked: true))
+        self.init(model: PricingModel(mocked: false))
     }
     
     private func start() {
