@@ -30,9 +30,11 @@
 		B1B1F0AD218553D500A84EAC /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1F0AC218553D500A84EAC /* Agent.swift */; };
 		B1B1F0AF2185549500A84EAC /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1F0AE2185549500A84EAC /* Place.swift */; };
 		B1B1F0B12185555600A84EAC /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1F0B02185555600A84EAC /* Currency.swift */; };
+		B1DEF318218697B500F2893D /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DEF317218697B400F2893D /* ResultsViewController.swift */; };
+		B1DEF31A218698CC00F2893D /* NieboStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DEF319218698CC00F2893D /* NieboStyleGuide.swift */; };
+		B1DEF31D2186A1CB00F2893D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1EE7B392184DCF500AFF9A8 /* Assets.xcassets */; };
+		B1DEF31F2186A68200F2893D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1DEF31E2186A68200F2893D /* Main.storyboard */; };
 		B1EE7B332184DCF400AFF9A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EE7B322184DCF400AFF9A8 /* AppDelegate.swift */; };
-		B1EE7B352184DCF400AFF9A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EE7B342184DCF400AFF9A8 /* ViewController.swift */; };
-		B1EE7B382184DCF400AFF9A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1EE7B362184DCF400AFF9A8 /* Main.storyboard */; };
 		B1EE7B3A2184DCF500AFF9A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1EE7B392184DCF500AFF9A8 /* Assets.xcassets */; };
 		B1EE7B3D2184DCF500AFF9A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1EE7B3B2184DCF500AFF9A8 /* LaunchScreen.storyboard */; };
 		B1EE7B482184DCF500AFF9A8 /* NieboTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EE7B472184DCF500AFF9A8 /* NieboTests.swift */; };
@@ -114,10 +116,11 @@
 		B1B1F0AC218553D500A84EAC /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		B1B1F0AE2185549500A84EAC /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		B1B1F0B02185555600A84EAC /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		B1DEF317218697B400F2893D /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		B1DEF319218698CC00F2893D /* NieboStyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NieboStyleGuide.swift; sourceTree = "<group>"; };
+		B1DEF31E2186A68200F2893D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B1EE7B2F2184DCF400AFF9A8 /* Niebo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Niebo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1EE7B322184DCF400AFF9A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B1EE7B342184DCF400AFF9A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B1EE7B372184DCF400AFF9A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B1EE7B392184DCF500AFF9A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1EE7B3C2184DCF500AFF9A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1EE7B3E2184DCF500AFF9A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -188,8 +191,10 @@
 				B15302AB218508D700E98DE9 /* Models */,
 				B15302B321850F6F00E98DE9 /* Resources */,
 				B1B1F09B218517FA00A84EAC /* Entities */,
+				B1DEF316218697B400F2893D /* Views */,
 				B12164D12184EC1C00CF0DB3 /* NieboFramework.h */,
 				B12164D22184EC1C00CF0DB3 /* Info.plist */,
+				B1DEF319218698CC00F2893D /* NieboStyleGuide.swift */,
 			);
 			path = NieboFramework;
 			sourceTree = "<group>";
@@ -261,6 +266,14 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		B1DEF316218697B400F2893D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B1DEF317218697B400F2893D /* ResultsViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B1EE7B262184DCF400AFF9A8 = {
 			isa = PBXGroup;
 			children = (
@@ -289,8 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				B1EE7B322184DCF400AFF9A8 /* AppDelegate.swift */,
-				B1EE7B342184DCF400AFF9A8 /* ViewController.swift */,
-				B1EE7B362184DCF400AFF9A8 /* Main.storyboard */,
+				B1DEF31E2186A68200F2893D /* Main.storyboard */,
 				B1EE7B392184DCF500AFF9A8 /* Assets.xcassets */,
 				B1EE7B3B2184DCF500AFF9A8 /* LaunchScreen.storyboard */,
 				B1EE7B3E2184DCF500AFF9A8 /* Info.plist */,
@@ -472,6 +484,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1DEF31D2186A1CB00F2893D /* Assets.xcassets in Resources */,
 				B15302B621850F6F00E98DE9 /* pricesPoll.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,7 +503,7 @@
 				B1B1F0A121851BA800A84EAC /* pricesPoll.json in Resources */,
 				B1EE7B3D2184DCF500AFF9A8 /* LaunchScreen.storyboard in Resources */,
 				B1EE7B3A2184DCF500AFF9A8 /* Assets.xcassets in Resources */,
-				B1EE7B382184DCF400AFF9A8 /* Main.storyboard in Resources */,
+				B1DEF31F2186A68200F2893D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,12 +729,14 @@
 				B1B1F0B12185555600A84EAC /* Currency.swift in Sources */,
 				B1B1F09F2185185200A84EAC /* FlightQuery.swift in Sources */,
 				B1B1F0AD218553D500A84EAC /* Agent.swift in Sources */,
+				B1DEF318218697B500F2893D /* ResultsViewController.swift in Sources */,
 				B15302AA2184F7D000E98DE9 /* SKYPricesAPI.swift in Sources */,
 				B1B1F09D218517FA00A84EAC /* Itinerary.swift in Sources */,
 				B1B1F0AB2185531000A84EAC /* Carrier.swift in Sources */,
 				B1B1F0A921852D7600A84EAC /* Segment.swift in Sources */,
 				B1B1F0A721852C0B00A84EAC /* FlightNumber.swift in Sources */,
 				B1B1F0A5218527F400A84EAC /* FlightLeg.swift in Sources */,
+				B1DEF31A218698CC00F2893D /* NieboStyleGuide.swift in Sources */,
 				B1B1F0A3218526CF00A84EAC /* PricingOption.swift in Sources */,
 				B1B1F0AF2185549500A84EAC /* Place.swift in Sources */,
 				B15302AF21850A2E00E98DE9 /* PricingModel.swift in Sources */,
@@ -740,7 +755,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1EE7B352184DCF400AFF9A8 /* ViewController.swift in Sources */,
 				B1EE7B332184DCF400AFF9A8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -779,14 +793,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B1EE7B362184DCF400AFF9A8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B1EE7B372184DCF400AFF9A8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B1EE7B3B2184DCF500AFF9A8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
