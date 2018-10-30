@@ -1,6 +1,9 @@
 import UIKit
+import AlamofireImage
 
 public class SegmentView: UIView {
+    
+    private var iconView: UIImageView!
     
     func createConstraints() {
         self.snp.makeConstraints { make in
@@ -15,8 +18,9 @@ public class SegmentView: UIView {
                 make.left.equalToSuperview().offset(16)
                 make.centerY.equalToSuperview()
             }
-            $0.backgroundColor = .black
+            $0.contentMode = .scaleAspectFit
         }
+        self.iconView = iconView
         
         let timeLabel = UILabel(frame: .zero).then {
             self.addSubview($0)
@@ -67,4 +71,10 @@ public class SegmentView: UIView {
         }
     }
 
+    func set(data: Segment) {
+        if let imageRawUrl = data.carrier?.imageUrl,
+            let imageUrl = URL(string: imageRawUrl) {
+            self.iconView.af_setImage(withURL: imageUrl)
+        }
+    }
 }
