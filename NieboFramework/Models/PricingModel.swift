@@ -43,6 +43,7 @@ public extension Reactive where Base == PricingModel {
                 return self.base.api.rx.request(SKYPricesAPI.results(url: location, pageIndex: 0))
             }
             .map(FlightQuery.self)
+            .map { $0.compose() }
             .asObservable()
     }
     

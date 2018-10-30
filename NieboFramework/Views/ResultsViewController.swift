@@ -15,6 +15,7 @@ public class ResultsViewController: UIViewController {
     }
     private var totalResultsLabel: UILabel!
     private let disposeBag = DisposeBag()
+    private var itemHeights: [CGFloat] = []
     
     public init(viewModel: ResultsViewModel) {
         self.viewModel = viewModel
@@ -148,6 +149,8 @@ public class ResultsViewController: UIViewController {
             $0.backgroundColor = .lightGrayBG
             let bundle = Bundle(for: ResultsViewController.self)
             $0.register(UINib(nibName: "ResultsCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: "Cell")
+            $0.showsVerticalScrollIndicator = false
+            $0.keyboardDismissMode = .onDrag
         }
         self.collectionView = collectionView
         
@@ -166,6 +169,7 @@ public class ResultsViewController: UIViewController {
                 return UICollectionViewCell()
             }
             return cell.then {
+                $0.set(data: item)
                 $0.backgroundColor = .white
             }
         })
@@ -185,16 +189,31 @@ public class ResultsViewController: UIViewController {
                 self?.totalResultsLabel.text = "\(count) results shown"
             })
             .disposed(by: self.disposeBag)
+        
+        self.viewModel.rx.results
+            .map { $0.itineraries }
+            .subscribe(onNext: { [weak self] data in
+                self?.itemHeights = data.map { itinerary -> CGFloat in
+                    let legsCount = itinerary.leg?.segments.count ?? 0
+                    let totalHeight = (70 * legsCount) + 60
+                    return CGFloat(totalHeight)
+                }
+            })
+            .disposed(by: self.disposeBag)
     }
 
 }
 
 extension ResultsViewController: UICollectionViewDelegateFlowLayout {
     
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 13, left: 0, bottom: 0, right: 0)
+    }
+    
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(
             width: collectionView.frame.size.width,
-            height: 200
+            height: self.itemHeights[indexPath.row]
         )
     }
     
