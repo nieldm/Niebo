@@ -23,4 +23,5 @@ target 'Niebo' do
     end
   end
 
+  inhibit_all_warnings!
 end

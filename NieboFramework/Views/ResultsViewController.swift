@@ -1,12 +1,28 @@
 import UIKit
 import SnapKit
+import RxDataSources
+import RxCocoa
+import RxSwift
 
 public class ResultsViewController: UIViewController {
 
+    private let viewModel: ResultsViewModel
     private var leftNavButton: UIButton!
+    private var collectionView: UICollectionView! {
+        didSet {
+            self.configureCollectionView()
+        }
+    }
+    private var totalResultsLabel: UILabel!
+    private let disposeBag = DisposeBag()
     
-    public init() {
+    public init(viewModel: ResultsViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    public convenience init() {
+        self.init(viewModel: ResultsViewModel())
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -95,6 +111,7 @@ public class ResultsViewController: UIViewController {
             $0.textColor = .purpleyGrey
             $0.font = .systemFont(ofSize: 12, weight: .regular)
         }
+        self.totalResultsLabel = totalResultsLabel
         
         let filterButton = UIButton(frame: .zero).then {
             header.addSubview($0)
@@ -121,15 +138,20 @@ public class ResultsViewController: UIViewController {
             $0.setTitleColor(.turquoiseBlue, for: .normal)
             $0.titleLabel?.font = .systemFont(ofSize: 12, weight: .regular)
         }
-        
-        let tableView = UITableView(frame: .zero, style: .grouped).then {
+        let flowLayout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout).then {
             self.view.insertSubview($0, belowSubview: header)
             $0.snp.makeConstraints { make in
                 make.top.equalTo(header.snp.bottom)
                 make.left.right.bottom.equalToSuperview()
             }
             $0.backgroundColor = .lightGrayBG
+            let bundle = Bundle(for: ResultsViewController.self)
+            $0.register(UINib(nibName: "ResultsCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: "Cell")
         }
+        self.collectionView = collectionView
+        
+        self.rxBind()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -137,5 +159,43 @@ public class ResultsViewController: UIViewController {
         let showBackButton = self.navigationController?.viewControllers.count ?? 0 > 1
         self.leftNavButton.isHidden = !showBackButton
     }
+    
+    private func configureCollectionView() {
+        let dataSource = RxCollectionViewSectionedAnimatedDataSource<SectionOfResult>(configureCell: { (_, cv: UICollectionView, ip: IndexPath, item: Itinerary) -> UICollectionViewCell in
+            guard let cell = cv.dequeueReusableCell(withReuseIdentifier: "Cell", for: ip) as? ResultsCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            return cell.then {
+                $0.backgroundColor = .white
+            }
+        })
+        self.viewModel.rx.results
+            .map { [SectionOfResult(header: "Itinerary", items: $0.itineraries)] }
+            .bind(to: self.collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: self.disposeBag)
+        
+        let _ = self.collectionView.rx.setDelegate(self)
+    }
+    
+    private func rxBind() {
+        self.viewModel.rx.results
+            .map { $0.itineraries.count }
+            .asDriver(onErrorJustReturn: 0)
+            .drive(onNext: { [weak self] count in
+                self?.totalResultsLabel.text = "\(count) results shown"
+            })
+            .disposed(by: self.disposeBag)
+    }
 
+}
+
+extension ResultsViewController: UICollectionViewDelegateFlowLayout {
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(
+            width: collectionView.frame.size.width,
+            height: 200
+        )
+    }
+    
 }
