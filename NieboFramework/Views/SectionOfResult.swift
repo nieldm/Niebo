@@ -11,7 +11,7 @@ extension Itinerary: IdentifiableType {
     public typealias Identity = String
     
     public var identity: Identity {
-        return self.legId
+        return self.outboundLegId + self.inboundLegId
     }
     
 }
@@ -19,7 +19,8 @@ extension Itinerary: IdentifiableType {
 extension Itinerary: Equatable {
     
     public static func == (lhs: Itinerary, rhs: Itinerary) -> Bool {
-        return lhs.legId == rhs.legId
+        return lhs.outboundLegId == rhs.outboundLegId &&
+            lhs.inboundLegId == rhs.inboundLegId
     }
     
 }

@@ -25,7 +25,7 @@
 		B15C9E222188F965000EC7FB /* ResultsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B15C9E202188F965000EC7FB /* ResultsCollectionViewCell.xib */; };
 		B15C9E2421890E09000EC7FB /* SegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15C9E2321890E09000EC7FB /* SegmentView.swift */; };
 		B1B1F09D218517FA00A84EAC /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1F09C218517FA00A84EAC /* Itinerary.swift */; };
-		B1B1F09F2185185200A84EAC /* FlightQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1F09E2185185200A84EAC /* FlightQuery.swift */; };
+		B1B1F09F2185185200A84EAC /* FlightResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1F09E2185185200A84EAC /* FlightResponse.swift */; };
 		B1B1F0A121851BA800A84EAC /* pricesPoll.json in Resources */ = {isa = PBXBuildFile; fileRef = B15302B521850F6F00E98DE9 /* pricesPoll.json */; };
 		B1B1F0A3218526CF00A84EAC /* PricingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1F0A2218526CF00A84EAC /* PricingOption.swift */; };
 		B1B1F0A5218527F400A84EAC /* FlightLeg.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1F0A4218527F400A84EAC /* FlightLeg.swift */; };
@@ -35,6 +35,8 @@
 		B1B1F0AD218553D500A84EAC /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1F0AC218553D500A84EAC /* Agent.swift */; };
 		B1B1F0AF2185549500A84EAC /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1F0AE2185549500A84EAC /* Place.swift */; };
 		B1B1F0B12185555600A84EAC /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1F0B02185555600A84EAC /* Currency.swift */; };
+		B1C1B43F218A358A0046FCCF /* FlightQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C1B43E218A358A0046FCCF /* FlightQuery.swift */; };
+		B1C1B441218A38230046FCCF /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C1B440218A38230046FCCF /* HelperExtensions.swift */; };
 		B1DEF318218697B500F2893D /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DEF317218697B400F2893D /* ResultsViewController.swift */; };
 		B1DEF31A218698CC00F2893D /* NieboStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DEF319218698CC00F2893D /* NieboStyleGuide.swift */; };
 		B1DEF31D2186A1CB00F2893D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1EE7B392184DCF500AFF9A8 /* Assets.xcassets */; };
@@ -117,7 +119,7 @@
 		B15C9E202188F965000EC7FB /* ResultsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsCollectionViewCell.xib; sourceTree = "<group>"; };
 		B15C9E2321890E09000EC7FB /* SegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentView.swift; sourceTree = "<group>"; };
 		B1B1F09C218517FA00A84EAC /* Itinerary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
-		B1B1F09E2185185200A84EAC /* FlightQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightQuery.swift; sourceTree = "<group>"; };
+		B1B1F09E2185185200A84EAC /* FlightResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightResponse.swift; sourceTree = "<group>"; };
 		B1B1F0A2218526CF00A84EAC /* PricingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingOption.swift; sourceTree = "<group>"; };
 		B1B1F0A4218527F400A84EAC /* FlightLeg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightLeg.swift; sourceTree = "<group>"; };
 		B1B1F0A621852C0B00A84EAC /* FlightNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightNumber.swift; sourceTree = "<group>"; };
@@ -126,6 +128,8 @@
 		B1B1F0AC218553D500A84EAC /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		B1B1F0AE2185549500A84EAC /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		B1B1F0B02185555600A84EAC /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		B1C1B43E218A358A0046FCCF /* FlightQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightQuery.swift; sourceTree = "<group>"; };
+		B1C1B440218A38230046FCCF /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		B1DEF317218697B400F2893D /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		B1DEF319218698CC00F2893D /* NieboStyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NieboStyleGuide.swift; sourceTree = "<group>"; };
 		B1DEF31E2186A68200F2893D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 				B12164D12184EC1C00CF0DB3 /* NieboFramework.h */,
 				B12164D22184EC1C00CF0DB3 /* Info.plist */,
 				B1DEF319218698CC00F2893D /* NieboStyleGuide.swift */,
+				B1C1B440218A38230046FCCF /* HelperExtensions.swift */,
 			);
 			path = NieboFramework;
 			sourceTree = "<group>";
@@ -264,7 +269,8 @@
 			children = (
 				B1B1F09C218517FA00A84EAC /* Itinerary.swift */,
 				B1B1F0A2218526CF00A84EAC /* PricingOption.swift */,
-				B1B1F09E2185185200A84EAC /* FlightQuery.swift */,
+				B1B1F09E2185185200A84EAC /* FlightResponse.swift */,
+				B1C1B43E218A358A0046FCCF /* FlightQuery.swift */,
 				B1B1F0A4218527F400A84EAC /* FlightLeg.swift */,
 				B1B1F0A621852C0B00A84EAC /* FlightNumber.swift */,
 				B1B1F0A821852D7600A84EAC /* Segment.swift */,
@@ -749,8 +755,9 @@
 				B1B1F0B12185555600A84EAC /* Currency.swift in Sources */,
 				B15C9E182188EBD8000EC7FB /* ResultsViewModel.swift in Sources */,
 				B15C9E1A2188EFB4000EC7FB /* SectionOfResult.swift in Sources */,
-				B1B1F09F2185185200A84EAC /* FlightQuery.swift in Sources */,
+				B1B1F09F2185185200A84EAC /* FlightResponse.swift in Sources */,
 				B1B1F0AD218553D500A84EAC /* Agent.swift in Sources */,
+				B1C1B43F218A358A0046FCCF /* FlightQuery.swift in Sources */,
 				B1DEF318218697B500F2893D /* ResultsViewController.swift in Sources */,
 				B15302AA2184F7D000E98DE9 /* SKYPricesAPI.swift in Sources */,
 				B15C9E212188F965000EC7FB /* ResultsCollectionViewCell.swift in Sources */,
@@ -762,6 +769,7 @@
 				B1B1F0A5218527F400A84EAC /* FlightLeg.swift in Sources */,
 				B1DEF31A218698CC00F2893D /* NieboStyleGuide.swift in Sources */,
 				B1B1F0A3218526CF00A84EAC /* PricingOption.swift in Sources */,
+				B1C1B441218A38230046FCCF /* HelperExtensions.swift in Sources */,
 				B1B1F0AF2185549500A84EAC /* Place.swift in Sources */,
 				B15302AF21850A2E00E98DE9 /* PricingModel.swift in Sources */,
 			);
