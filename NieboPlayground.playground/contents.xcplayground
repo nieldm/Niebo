@@ -3,5 +3,6 @@
     <pages>
         <page name='API'/>
         <page name='ResultViewController'/>
+        <page name='ShortestAndCheapest'/>
     </pages>
 </playground>

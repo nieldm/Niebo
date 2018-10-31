@@ -20,10 +20,19 @@ public class ResultsViewModel: ReactiveCompatible {
     
     private func start() {
         self.model.rx.initSession
-            .subscribe(self.query)
+            .subscribe(onNext: {
+                self.query.onNext($0)
+            })
             .disposed(by: self.disposeBag)
     }
     
+    func change(sort: SortOption?, modifier: SortModifier?, filter: FilterOption?) {
+        self.model.rx.change(sortOption: sort, sortModifier: modifier, filter: filter)
+            .subscribe(onNext: {
+                self.query.onNext($0)
+            })
+            .disposed(by: self.disposeBag)
+    }
 }
 
 public extension Reactive where Base == ResultsViewModel {

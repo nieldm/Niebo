@@ -16,8 +16,14 @@ public class ResultsViewController: UIViewController {
     private var titleLabel: UILabel!
     private var subTitleLabel: UILabel!
     private var totalResultsLabel: UILabel!
+    private var sortButton: UIButton!
+    private var filterButton: UIButton!
     private let disposeBag = DisposeBag()
     private var itemHeights: [CGFloat] = []
+    
+    private var lastSortOption: SortOption?
+    private var lastSortModifier: SortModifier?
+    private var lastFilter: FilterOption?
     
     public init(viewModel: ResultsViewModel) {
         self.viewModel = viewModel
@@ -130,6 +136,7 @@ public class ResultsViewController: UIViewController {
             $0.setTitleColor(.turquoiseBlue, for: .normal)
             $0.titleLabel?.font = .systemFont(ofSize: 12, weight: .regular)
         }
+        self.filterButton = filterButton
         
         let sortButton = UIButton(frame: .zero).then {
             header.addSubview($0)
@@ -143,6 +150,8 @@ public class ResultsViewController: UIViewController {
             $0.setTitleColor(.turquoiseBlue, for: .normal)
             $0.titleLabel?.font = .systemFont(ofSize: 12, weight: .regular)
         }
+        self.sortButton = sortButton
+        
         let flowLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout).then {
             self.view.insertSubview($0, belowSubview: header)
@@ -178,6 +187,7 @@ public class ResultsViewController: UIViewController {
             }
         })
         self.viewModel.rx.results
+            .debug("Results")
             .map { [SectionOfResult(header: "Itinerary", items: $0.itineraries)] }
             .bind(to: self.collectionView.rx.items(dataSource: dataSource))
             .disposed(by: self.disposeBag)
@@ -233,8 +243,70 @@ public class ResultsViewController: UIViewController {
             .bind(to: self.subTitleLabel.rx.text)
             .disposed(by: self.disposeBag)
         
-        }
+        self.sortButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                self.showSortAlert()
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.filterButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                self.showFilterAlert()
+            })
+            .disposed(by: self.disposeBag)
+    }
 
+    private func showSortAlert() {
+        let alert = UIAlertController(title: "Sort", message: "Select a sort option", preferredStyle: UIAlertController.Style.actionSheet)
+        alert.addAction(UIAlertAction(title: "Price ASC", style: UIAlertAction.Style.default, handler: { (action) in
+            self.selectSort(option: .price, modifier: .ascendant)
+        }))
+        alert.addAction(UIAlertAction(title: "Price DESC", style: UIAlertAction.Style.default, handler: { (action) in
+            self.selectSort(option: .price, modifier: .descendant)
+        }))
+        alert.addAction(UIAlertAction(title: "Duration ASC", style: UIAlertAction.Style.default, handler: { (action) in
+            self.selectSort(option: .duration, modifier: .ascendant)
+        }))
+        alert.addAction(UIAlertAction(title: "Duration DESC", style: UIAlertAction.Style.default, handler: { (action) in
+            self.selectSort(option: .duration, modifier: .descendant)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel))
+        self.present(alert, animated: true)
+    }
+    
+    private func showFilterAlert() {
+        let alert = UIAlertController(title: "Filter", message: "Select a filter option", preferredStyle: UIAlertController.Style.actionSheet)
+        alert.addAction(UIAlertAction(title: "Direct Flights", style: UIAlertAction.Style.default, handler: { (action) in
+            self.select(filter: FilterOption.direct)
+        }))
+        alert.addAction(UIAlertAction(title: "Clear", style: UIAlertAction.Style.default, handler: { (action) in
+            self.select(filter: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel))
+        self.present(alert, animated: true)
+    }
+    
+    private func selectSort(option: SortOption, modifier: SortModifier) {
+        self.lastSortOption = option
+        self.lastSortModifier = modifier
+        self.updateSortAndFilters()
+    }
+    
+    private func select(filter: FilterOption?) {
+        self.lastFilter = filter
+        self.updateSortAndFilters()
+    }
+    
+    private func updateSortAndFilters() {
+        self.viewModel.change(
+            sort: self.lastSortOption,
+            modifier: self.lastSortModifier,
+            filter: self.lastFilter
+        )
+    }
+    
 }
 
 extension ResultsViewController: UICollectionViewDelegateFlowLayout {

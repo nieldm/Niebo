@@ -11,7 +11,7 @@ extension Itinerary: IdentifiableType {
     public typealias Identity = String
     
     public var identity: Identity {
-        return self.outboundLegId + self.inboundLegId
+        return (self.outboundLegId ?? "") + (self.inboundLegId ?? "")
     }
     
 }

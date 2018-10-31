@@ -6,6 +6,8 @@ public class PricingModel: ReactiveCompatible {
     
     public var api: MoyaProvider<SKYPricesAPI>
     
+    fileprivate var lastLocation: String?
+    
     public init(mocked: Bool = false) {
         if CommandLine.arguments.contains("-mock-services") || mocked {
             self.api = MoyaProvider<SKYPricesAPI>(
@@ -40,8 +42,30 @@ public extension Reactive where Base == PricingModel {
         return self.base.api.rx.request(SKYPricesAPI.pricing)
             .flatMap { (response) -> PrimitiveSequence<SingleTrait, Response> in
                 let location = response.response?.allHeaderFields["Location"] as? String
-                return self.base.api.rx.request(SKYPricesAPI.results(url: location, pageIndex: 0))
+                self.base.lastLocation = location
+                let api = SKYPricesAPI.results(
+                    url: location,
+                    pageIndex: 0,
+                    sortOption: SortOption.price,
+                    sortModifier: SortModifier.ascendant,
+                    filter: nil
+                )
+                return self.base.api.rx.request(api)
             }
+            .map(FlightResponse.self)
+            .map { $0.compose() }
+            .asObservable()
+    }
+    
+    func change(sortOption: SortOption?, sortModifier: SortModifier?, filter: FilterOption?) -> Observable<FlightResponse> {
+        let api = SKYPricesAPI.results(
+            url: self.base.lastLocation,
+            pageIndex: 0,
+            sortOption: sortOption,
+            sortModifier: sortModifier,
+            filter: filter
+        )
+        return self.base.api.rx.request(api)
             .map(FlightResponse.self)
             .map { $0.compose() }
             .asObservable()
