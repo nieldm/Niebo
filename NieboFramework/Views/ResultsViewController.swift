@@ -21,6 +21,7 @@ public class ResultsViewController: UIViewController {
     private var sortButton: UIButton!
     private var filterButton: UIButton!
     private var activityIndicator: UIActivityIndicatorView!
+    private var shareText: String = ""
     
     private let disposeBag = DisposeBag()
     private var itemHeights: [CGFloat] = []
@@ -247,6 +248,9 @@ public class ResultsViewController: UIViewController {
                 }
                 return "\(from.name) to \(to.name)"
             }
+            .do(onNext: { [weak self] text in
+                self?.shareText = "Hey, im looking for flights from \(text) in skyscanner"
+            })
             .bind(to: self.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
         
@@ -291,6 +295,17 @@ public class ResultsViewController: UIViewController {
                     self.changeHeaderVisibility(show: false)
                 case .done:
                     self.changeHeaderVisibility(show: true)
+                }
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.rightNavButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                if let url = URL(string: "https://www.skyscanner.net") {
+                    UIActivityViewController(activityItems: [self.shareText, url], applicationActivities: nil).do {
+                        self.present($0, animated: true)
+                    }
                 }
             })
             .disposed(by: self.disposeBag)
