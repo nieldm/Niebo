@@ -285,8 +285,8 @@
 		B1DEF316218697B400F2893D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B1DEF317218697B400F2893D /* ResultsViewController.swift */,
 				B15C9E172188EBD8000EC7FB /* ResultsViewModel.swift */,
+				B1DEF317218697B400F2893D /* ResultsViewController.swift */,
 				B15C9E192188EFB4000EC7FB /* SectionOfResult.swift */,
 				B15C9E1F2188F965000EC7FB /* ResultsCollectionViewCell.swift */,
 				B15C9E202188F965000EC7FB /* ResultsCollectionViewCell.xib */,

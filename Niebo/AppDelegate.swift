@@ -10,10 +10,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let vc = ResultsViewController()
-        let nav = UINavigationController(rootViewController: vc)
-        nav.setNavigationBarHidden(true, animated: false)
+        let nav = UINavigationController(rootViewController: vc).then {
+            $0.setNavigationBarHidden(true, animated: false)
+            $0.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        }
+        let tab = UITabBarController().then {
+            $0.setViewControllers([nav], animated: false)
+        }
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = nav
+        self.window?.rootViewController = tab
         self.window?.makeKeyAndVisible()
         
         return true
