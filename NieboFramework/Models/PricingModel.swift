@@ -36,13 +36,13 @@ public class PricingModel: ReactiveCompatible {
 
 public extension Reactive where Base == PricingModel {
     
-    var initSession: Observable<FlightQuery> {
+    var initSession: Observable<FlightResponse> {
         return self.base.api.rx.request(SKYPricesAPI.pricing)
             .flatMap { (response) -> PrimitiveSequence<SingleTrait, Response> in
                 let location = response.response?.allHeaderFields["Location"] as? String
                 return self.base.api.rx.request(SKYPricesAPI.results(url: location, pageIndex: 0))
             }
-            .map(FlightQuery.self)
+            .map(FlightResponse.self)
             .map { $0.compose() }
             .asObservable()
     }

@@ -3,7 +3,7 @@ import RxSwift
 
 public class ResultsViewModel: ReactiveCompatible {
     
-    fileprivate let query = ReplaySubject<FlightQuery>.create(bufferSize: 1)
+    fileprivate let query = ReplaySubject<FlightResponse>.create(bufferSize: 1)
     
     private let model: PricingModel
     private let disposeBag = DisposeBag()
@@ -28,7 +28,7 @@ public class ResultsViewModel: ReactiveCompatible {
 
 public extension Reactive where Base == ResultsViewModel {
     
-    var results: Observable<FlightQuery> {
+    var results: Observable<FlightResponse> {
         return self.base.query
     }
     

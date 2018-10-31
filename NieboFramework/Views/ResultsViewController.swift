@@ -13,6 +13,8 @@ public class ResultsViewController: UIViewController {
             self.configureCollectionView()
         }
     }
+    private var titleLabel: UILabel!
+    private var subTitleLabel: UILabel!
     private var totalResultsLabel: UILabel!
     private let disposeBag = DisposeBag()
     private var itemHeights: [CGFloat] = []
@@ -86,6 +88,7 @@ public class ResultsViewController: UIViewController {
             $0.textColor = .dusk
             $0.font = .systemFont(ofSize: 16, weight: .semibold)
         }
+        self.titleLabel = titleLabel
         
         let subTitleLabel = UILabel(frame: .zero).then {
             header.addSubview($0)
@@ -99,6 +102,7 @@ public class ResultsViewController: UIViewController {
             $0.textColor = .purpleyGrey
             $0.font = .systemFont(ofSize: 12, weight: .regular)
         }
+        self.subTitleLabel = subTitleLabel
         
         let totalResultsLabel = UILabel(frame: .zero).then {
             header.addSubview($0)
@@ -194,13 +198,42 @@ public class ResultsViewController: UIViewController {
             .map { $0.itineraries }
             .subscribe(onNext: { [weak self] data in
                 self?.itemHeights = data.map { itinerary -> CGFloat in
-                    let legsCount = itinerary.leg?.segments.count ?? 0
-                    let totalHeight = (70 * legsCount) + 60
+                    var spaces = 0
+                    if let _ = itinerary.outbound {
+                        spaces += 1
+                    }
+                    if let _ = itinerary.inbound {
+                        spaces += 1
+                    }
+                    let totalHeight = (70 * spaces) + 60
                     return CGFloat(totalHeight)
                 }
             })
             .disposed(by: self.disposeBag)
-    }
+        
+        self.viewModel.rx.results
+            .map { results -> String in
+                guard let from = results.query.origin,
+                    let to = results.query.destination else {
+                    return ""
+                }
+                return "\(from.name) to \(to.name)"
+            }
+            .bind(to: self.titleLabel.rx.text)
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.rx.results
+            .map { results -> String in
+                guard let from = results.query.outboundDate.dateNoTimeZone?.monthDayAndDayOfTheWeek,
+                    let to = results.query.inboundDate.dateNoTimeZone?.monthDayAndDayOfTheWeek else {
+                        return ""
+                }
+                return "\(from) - \(to)"
+            }
+            .bind(to: self.subTitleLabel.rx.text)
+            .disposed(by: self.disposeBag)
+        
+        }
 
 }
 

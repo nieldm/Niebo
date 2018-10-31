@@ -19,12 +19,19 @@ class ResultsCollectionViewCell: UICollectionViewCell {
                 self.priceLabel.text = priceString
             }
         }
-        data.leg?.segments.forEach { segment in
-            let _ = SegmentView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 70)).then {
-                self.segmentStackView.addArrangedSubview($0)
-                $0.createConstraints()
-                $0.set(data: segment)
-            }
+        if let leg = data.outbound {
+            self.addLeg(data: leg)
+        }
+        if let leg = data.inbound {
+            self.addLeg(data: leg)
+        }
+    }
+    
+    private func addLeg(data: FlightLeg) {
+        let _ = SegmentView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 70)).then {
+            self.segmentStackView.addArrangedSubview($0)
+            $0.createConstraints()
+            $0.set(data: data)
         }
     }
     

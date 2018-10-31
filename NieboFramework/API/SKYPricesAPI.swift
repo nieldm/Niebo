@@ -59,8 +59,11 @@ extension SKYPricesAPI: TargetType {
             parameters["originPlace"] = "EDI-sky"
             parameters["destinationPlace"] = "LOND-sky"
             parameters["outboundDate"] = "2018-11-16"
+            parameters["inboundDate"] = "2018-12-24"
         case .results(_, let pageIndex):
             parameters["pageIndex"] = pageIndex
+            parameters["sortOrder"] = "asc"
+            parameters["sortType"] = "price"
         }
         parameters["apiKey"] = "ss630745725358065467897349852985"
         return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
