@@ -4,7 +4,11 @@ class ResultsCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var priceLabel: UILabel!
     @IBOutlet private weak var segmentStackView: UIStackView!
-
+    @IBOutlet private weak var cheapestLabel: UILabel!
+    @IBOutlet private weak var shortestLabel: UILabel!
+    @IBOutlet private weak var pointsLabel: UILabel!
+    @IBOutlet private weak var emojiLabel: UILabel!
+    
     func set(data: Itinerary) {
         if let pricing = data.pricingOptions.first, let currency = data.currency {
             let currencyFormatter = NumberFormatter().then {
@@ -19,6 +23,10 @@ class ResultsCollectionViewCell: UICollectionViewCell {
                 self.priceLabel.text = priceString
             }
         }
+        self.cheapestLabel.isHidden = !data.cheapest
+        self.shortestLabel.isHidden = !data.shortest
+        self.emojiLabel.text = data.emoji
+        self.pointsLabel.text = "\(data.points)"
         if let leg = data.outbound {
             self.addLeg(data: leg)
         }
@@ -41,5 +49,31 @@ class ResultsCollectionViewCell: UICollectionViewCell {
             self?.segmentStackView.removeArrangedSubview(view)
             view.removeFromSuperview()
         }
+        self.cheapestLabel.isHidden = true
+        self.shortestLabel.isHidden = true
+    }
+}
+
+fileprivate extension Itinerary {
+    
+    var points: Float {
+        var result: Float = 0
+        if cheapest {
+            result += 5
+        }
+        if shortest {
+            result += 5
+        }
+        return result
+    }
+    
+    var emoji: String {
+        guard self.points > 0 else {
+            return "😭"
+        }
+        if self.points < 5 {
+            return "🤨"
+        }
+        return self.points == 10 ? "🤩" : "🙂"
     }
 }
