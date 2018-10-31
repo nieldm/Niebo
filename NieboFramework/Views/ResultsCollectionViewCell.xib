@@ -92,8 +92,12 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="410" height="248"/>
             <connections>
+                <outlet property="cheapestLabel" destination="Lo2-gE-Sy7" id="xgC-DI-WP0"/>
+                <outlet property="emojiLabel" destination="qv5-NJ-bSP" id="atG-Zf-yuB"/>
+                <outlet property="pointsLabel" destination="ynr-ps-kHc" id="cwQ-Ac-eN1"/>
                 <outlet property="priceLabel" destination="BtJ-kg-stB" id="i11-ua-rQm"/>
                 <outlet property="segmentStackView" destination="tyy-H8-K2L" id="f4f-sg-B07"/>
+                <outlet property="shortestLabel" destination="FBu-U5-YvB" id="105-TJ-nGu"/>
             </connections>
             <point key="canvasLocation" x="57.600000000000001" y="81.859070464767626"/>
         </collectionViewCell>

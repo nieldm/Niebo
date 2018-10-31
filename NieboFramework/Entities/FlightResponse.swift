@@ -18,6 +18,17 @@ public struct FlightResponse: Codable, Then {
     public var places: [Place]
     public var currencies: [Currency]
     
+    var cheapestPrice: Float? {
+        return self.itineraries.sorted(by: { (lhs: Itinerary, rhs: Itinerary) -> Bool in
+            return lhs.price < rhs.price
+        }).first?.price
+    }
+    var shortestTime: Int? {
+        return self.itineraries.sorted(by: { (lhs: Itinerary, rhs: Itinerary) -> Bool in
+            return lhs.duration < rhs.duration
+        }).first?.duration
+    }
+    
     enum CodingKeys: String, CodingKey
     {
         case status = "Status"
@@ -60,6 +71,8 @@ public struct FlightResponse: Codable, Then {
             }
             response.itineraries = response.itineraries.map { itinerary in
                 return itinerary.with { mutableItinerary in
+                    mutableItinerary.cheapest = itinerary.price == self.cheapestPrice
+                    mutableItinerary.shortest = itinerary.duration == self.shortestTime
                     mutableItinerary.currency = response.currencies.first
                     mutableItinerary.inbound = response.legs.filter { $0.id == itinerary.inboundLegId }.first
                     mutableItinerary.outbound = response.legs.filter { $0.id == itinerary.outboundLegId }.first
