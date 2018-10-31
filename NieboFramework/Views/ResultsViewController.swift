@@ -7,7 +7,9 @@ import RxSwift
 public class ResultsViewController: UIViewController {
 
     private let viewModel: ResultsViewModel
+    private var header: UIView!
     private var leftNavButton: UIButton!
+    private var rightNavButton: UIButton!
     private var collectionView: UICollectionView! {
         didSet {
             self.configureCollectionView()
@@ -18,6 +20,8 @@ public class ResultsViewController: UIViewController {
     private var totalResultsLabel: UILabel!
     private var sortButton: UIButton!
     private var filterButton: UIButton!
+    private var activityIndicator: UIActivityIndicatorView!
+    
     private let disposeBag = DisposeBag()
     private var itemHeights: [CGFloat] = []
     
@@ -56,6 +60,7 @@ public class ResultsViewController: UIViewController {
             $0.layer.shadowOpacity = 0.36
             $0.backgroundColor = .white
         }
+        self.header = header
         
         let leftNavButton = UIButton(frame: .zero).then {
             header.addSubview($0)
@@ -81,6 +86,7 @@ public class ResultsViewController: UIViewController {
             let image = UIImage(named: "icActionShare", in: bundle, compatibleWith: nil)
             $0.setImage(image, for: .normal)
         }
+        self.rightNavButton = rightNavButton
         
         let titleLabel = UILabel(frame: .zero).then {
             header.addSubview($0)
@@ -167,6 +173,18 @@ public class ResultsViewController: UIViewController {
         }
         self.collectionView = collectionView
         
+        let activityIndicator = UIActivityIndicatorView(style: .whiteLarge).then {
+            header.addSubview($0)
+            $0.snp.makeConstraints { make in
+                make.centerY.equalTo(titleLabel.snp.bottom)
+                make.centerX.equalToSuperview()
+            }
+            $0.hidesWhenStopped = true
+            $0.color = .dusk
+            $0.startAnimating()
+        }
+        self.activityIndicator = activityIndicator
+        
         self.rxBind()
     }
     
@@ -246,49 +264,50 @@ public class ResultsViewController: UIViewController {
         self.sortButton.rx.tap
             .asDriver()
             .drive(onNext: {
-                self.showSortAlert()
+                self.rx.showSortAlert()
+                    .subscribe(onNext: { [weak self] result in
+                        self?.selectSort(option: result.0, modifier: result.1)
+                    })
+                    .disposed(by: self.disposeBag)
             })
             .disposed(by: self.disposeBag)
         
         self.filterButton.rx.tap
             .asDriver()
             .drive(onNext: {
-                self.showFilterAlert()
+                self.rx.showFilterAlert()
+                    .subscribe(onNext: { [weak self] result in
+                        self?.select(filter: result)
+                    })
+                    .disposed(by: self.disposeBag)
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.rx.state
+            .asDriver(onErrorJustReturn: .loading)
+            .drive(onNext: { state in
+                switch state {
+                case .loading:
+                    self.changeHeaderVisibility(show: false)
+                case .done:
+                    self.changeHeaderVisibility(show: true)
+                }
             })
             .disposed(by: self.disposeBag)
     }
+    
+    private func changeHeaderVisibility(show: Bool) {
+        self.header.subviews.forEach { $0.isHidden = !show }
+        self.activityIndicator.isHidden = false
+        self.leftNavButton.isHidden = true
+        if show {
+            self.activityIndicator.stopAnimating()
+        } else {
+            self.activityIndicator.startAnimating()
+        }
+    }
 
-    private func showSortAlert() {
-        let alert = UIAlertController(title: "Sort", message: "Select a sort option", preferredStyle: UIAlertController.Style.actionSheet)
-        alert.addAction(UIAlertAction(title: "Price ASC", style: UIAlertAction.Style.default, handler: { (action) in
-            self.selectSort(option: .price, modifier: .ascendant)
-        }))
-        alert.addAction(UIAlertAction(title: "Price DESC", style: UIAlertAction.Style.default, handler: { (action) in
-            self.selectSort(option: .price, modifier: .descendant)
-        }))
-        alert.addAction(UIAlertAction(title: "Duration ASC", style: UIAlertAction.Style.default, handler: { (action) in
-            self.selectSort(option: .duration, modifier: .ascendant)
-        }))
-        alert.addAction(UIAlertAction(title: "Duration DESC", style: UIAlertAction.Style.default, handler: { (action) in
-            self.selectSort(option: .duration, modifier: .descendant)
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel))
-        self.present(alert, animated: true)
-    }
-    
-    private func showFilterAlert() {
-        let alert = UIAlertController(title: "Filter", message: "Select a filter option", preferredStyle: UIAlertController.Style.actionSheet)
-        alert.addAction(UIAlertAction(title: "Direct Flights", style: UIAlertAction.Style.default, handler: { (action) in
-            self.select(filter: FilterOption.direct)
-        }))
-        alert.addAction(UIAlertAction(title: "Clear", style: UIAlertAction.Style.default, handler: { (action) in
-            self.select(filter: nil)
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel))
-        self.present(alert, animated: true)
-    }
-    
-    private func selectSort(option: SortOption, modifier: SortModifier) {
+    private func selectSort(option: SortOption?, modifier: SortModifier?) {
         self.lastSortOption = option
         self.lastSortModifier = modifier
         self.updateSortAndFilters()
@@ -307,6 +326,52 @@ public class ResultsViewController: UIViewController {
         )
     }
     
+}
+
+fileprivate extension Reactive where Base == ResultsViewController {
+    func showFilterAlert() -> Observable<FilterOption?> {
+        return Observable.create { observer in
+            let alert = UIAlertController(title: "Filter", message: "Select a filter option", preferredStyle: UIAlertController.Style.actionSheet)
+            alert.addAction(UIAlertAction(title: "Direct Flights", style: UIAlertAction.Style.default) { _ in
+                observer.onNext(FilterOption.direct)
+                observer.onCompleted()
+            })
+            alert.addAction(UIAlertAction(title: "Clear", style: UIAlertAction.Style.default) { _ in
+                observer.onNext(nil)
+                observer.onCompleted()
+            })
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { _ in
+                observer.onCompleted()
+            })
+            self.base.present(alert, animated: true)
+            return Disposables.create()
+        }
+    }
+    
+    func showSortAlert() -> Observable<(SortOption?, SortModifier?)> {
+        return Observable.create { observer in
+            let alert = UIAlertController(title: "Sort", message: "Select a sort option", preferredStyle: UIAlertController.Style.actionSheet)
+            alert.addAction(UIAlertAction(title: "Price ASC", style: UIAlertAction.Style.default, handler: { (action) in
+                observer.onNext((SortOption.price, SortModifier.ascendant))
+                observer.onCompleted()
+            }))
+            alert.addAction(UIAlertAction(title: "Price DESC", style: UIAlertAction.Style.default, handler: { (action) in
+                observer.onNext((SortOption.price, SortModifier.descendant))
+                observer.onCompleted()
+            }))
+            alert.addAction(UIAlertAction(title: "Duration ASC", style: UIAlertAction.Style.default, handler: { (action) in
+                observer.onNext((SortOption.duration, SortModifier.ascendant))
+                observer.onCompleted()
+            }))
+            alert.addAction(UIAlertAction(title: "Duration DESC", style: UIAlertAction.Style.default, handler: { (action) in
+                observer.onNext((SortOption.duration, SortModifier.descendant))
+                observer.onCompleted()
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel))
+            self.base.present(alert, animated: true)
+            return Disposables.create()
+        }
+    }
 }
 
 extension ResultsViewController: UICollectionViewDelegateFlowLayout {
